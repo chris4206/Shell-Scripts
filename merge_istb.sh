@@ -21,7 +21,7 @@ echo "🔍 Collecting episode information..."
 TEMP_FILE=$(mktemp)
 
 # Find each episode's tracks-v1a1 folder and get its creation time
-find "$BASE_DIR" -type d -name "tracks-v1a1" -path "*vod_episode*" | while read ts_dir; do
+find "$BASE_DIR" -type d -name "tracks-v1a1" \( -path "*vod_episode*" -o -path "*vod_movie*" \) | while read ts_dir; do
     ep_folder=$(dirname "$ts_dir")
     ep_name=$(basename "$ep_folder")
     
